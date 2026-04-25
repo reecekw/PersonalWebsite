@@ -1,0 +1,164 @@
+/* /PWfrontend/src/components/Resume.css */ */
+
+/* src/components/Resume.css */
+
+/* 1. Page Background: Makes the white cards pop and fixes any default text color issues */
+body {
+  background-color: #f4f7f6; /* Soft, professional off-white/gray */
+  color: #212529; /* Forces all default text to be dark gray (fixes the white text issue) */
+}
+
+/* 2. Animated Tech Gradient for the Header */
+.resume-header-bg {
+  background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1b2a47);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  border-radius: 1rem;
+  padding: 5rem 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+}
+
+/* Forces text inside the header to be white, ignoring Bootstrap defaults */
+.resume-header-bg h1, 
+.resume-header-bg p {
+  color: #ffffff !important; 
+}
+
+/* Circular Profile Image */
+.profile-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover; /* Ensures the image doesn't stretch */
+  border-radius: 50%; /* Makes it a perfect circle */
+  border: 4px solid #ffffff; /* Crisp white border */
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2); /* Soft drop shadow */
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-img:hover {
+  transform: scale(1.05); /* Slight pop/zoom on hover */
+}
+
+/* The Keyframes that make the gradient slowly move */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Custom Buttons for the Dark Header */
+.btn-custom-outline {
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  color: #ffffff !important;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.btn-custom-outline:hover {
+  background-color: #ffffff;
+  color: #203a43 !important;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* 3. Interactive Card Hover Effects */
+.hover-card {
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+  border-left: 4px solid transparent !important;
+  border-radius: 0.75rem;
+  background-color: #ffffff; /* Ensures the card itself is strictly white */
+}
+
+.hover-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08) !important;
+  border-left: 4px solid #2c5364 !important; /* Nice blue accent on hover */
+}
+
+/* Section Title Styling */
+.section-title {
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 1.2rem;
+  color: #1b2a47;
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #e2e8f0;
+  display: inline-block; /* Makes the underline wrap tightly to the text */
+}
+
+/* Customizing the Badges - High Contrast */
+.badge-custom {
+  background-color: #2c5364; /* Matches the dark accent color */
+  color: #ffffff; /* Crisp white text */
+  font-weight: 700;
+  padding: 0.6em 0.8em;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Adds a slight drop shadow so they lift off the page */
+  letter-spacing: 0.5px;
+}
+
+/* Circular Icon Buttons for Socials */
+.icon-btn {
+  width: 55px;
+  height: 55px;
+  border-radius: 50% !important; /* Forces a perfect circle */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0; /* Removes default Bootstrap padding */
+}
+
+/* Coral Animated Gradient for Maudi's Banner */
+.coral-banner-bg {
+  background: linear-gradient(-45deg, #e17357, #feb47b, #ff9966, #ff5e62);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  border-radius: 1rem;
+}
+
+/* Ensure text inside stays crisp white */
+.coral-banner-bg h2, 
+.coral-banner-bg p {
+  color: #ffffff !important;
+}
+
+
+/* Maudi's Main Header Background */
+.maudi-header-bg {
+  background: linear-gradient(-45deg, #e17357, #feb47b, #ff9966, #ff5e62);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  border-radius: 1rem;
+  padding: 5rem 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+}
+
+/* Ensure text inside stays crisp white */
+.maudi-header-bg h1, 
+.maudi-header-bg p {
+  color: #ffffff !important;
+}
+
+/* Green Animated Gradient for the World Cup Banner */
+.green-banner-bg {
+  background: linear-gradient(-45deg, #0b3d1b, #155d27, #1e7b36, #124c22);
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  border-radius: 1rem;
+  padding: 5rem 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5rem;
+}
+
+/* Ensure text inside stays crisp white */
+.green-banner-bg h1, 
+.green-banner-bg p {
+  color: #ffffff !important;
+}
