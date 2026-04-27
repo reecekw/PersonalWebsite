@@ -4,7 +4,7 @@ import Resume from './components/Resume';
 import MaudiResume from './components/MaudiResume';
 import Ncaa from './components/NCAA';
 import WorldCup from './components/Mundial';
-import Intramural from './components/MyTeams';
+import MyTeams from './components/MyTeams';
 
 const App: React.FC = () => {
   return (
@@ -19,7 +19,7 @@ const App: React.FC = () => {
             {/* Add your new routes here: */}
             <Route path="/NCAA" element={<Ncaa />} />
             <Route path="/Mundial" element={<WorldCup />} />
-            <Route path="/intramural" element={<Intramural />} />
+            <Route path="/MyTeams" element={<MyTeams />} />
           </Routes>
         </main>
         

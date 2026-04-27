@@ -23,7 +23,7 @@ const Resume: React.FC = () => {
         </p>
         
         <p className="fs-5 mb-4 text-white-50">
-          (737) 349-4771 | reecekwilliams428@gmail.com | reecekw.is404.net
+          (737) 349-4771 | reecekwilliams428@gmail.com
         </p>
         
         <div className="mt-4">
@@ -42,14 +42,6 @@ const Resume: React.FC = () => {
             rel="noreferrer"
           >
             <FaLinkedin size={24} className="me-2" /> LinkedIn
-          </a>
-          <a 
-            href="https://reecekw.is404.net" 
-            className="btn btn-lg btn-custom-outline rounded-pill px-4 mx-2 d-inline-flex align-items-center" 
-            target="_blank" 
-            rel="noreferrer"
-          >
-            <FaGlobe size={24} className="me-2" /> Portfolio
           </a>
         </div>
       </header>
@@ -198,9 +190,9 @@ const Resume: React.FC = () => {
         <div className="card shadow-sm border-0 hover-card">
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
-              <li><strong>Eagle Scout</strong>, Scouts of America (2020) [cite: 39]</li>
-              <li><strong>Regional Champion in Global Business</strong>, Future Business Leaders of America (FBLA) (2020) [cite: 40]</li>
-              <li><strong>Varsity Boys Soccer Coach’s Leadership Award</strong> (2022) [cite: 41]</li>
+              <li><strong>Eagle Scout</strong>, Scouts of America (2020)</li>
+              <li><strong>Regional Champion in Global Business</strong>, Future Business Leaders of America (FBLA) (2020)</li>
+              <li><strong>Varsity Boys Soccer Coach’s Leadership Award</strong> (2022)</li>
             </ul>
           </div>
         </div>

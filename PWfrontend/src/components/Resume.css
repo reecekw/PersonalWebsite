@@ -125,7 +125,6 @@ body {
   color: #ffffff !important;
 }
 
-
 /* Maudi's Main Header Background */
 .maudi-header-bg {
   background: linear-gradient(-45deg, #e17357, #feb47b, #ff9966, #ff5e62);
@@ -160,22 +159,60 @@ body {
   color: #ffffff !important;
 }
 
-/* Horizontal Team Banners */
-.team-banner-bg {
-  background: linear-gradient(135deg, #16162a 0%, #1a2238 100%);
+/* Custom Team Banners */
+.byu-banner-bg {
+  background: linear-gradient(135deg, #002255 0%, #001133 100%); /* Royal Blue */
   color: #ffffff;
   border-radius: 1rem;
-  overflow: hidden; /* Ensures the dark background stays inside the rounded corners */
+  overflow: hidden;
 }
 
-/* Adds a subtle line between the logo and the text on desktop */
-.logo-zone {
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
+.vikings-banner-bg {
+  background: linear-gradient(135deg, #4F2683 0%, #2b114d 100%); /* Vikings Purple */
+  color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
+.twolves-banner-bg {
+  background: linear-gradient(135deg, #0C2340 0%, #061120 100%); /* Timberwolves Navy */
+  color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.wild-banner-bg {
+  background: linear-gradient(135deg, #154734 0%, #0a241a 100%); /* Wild Forest Green */
+  color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* European Soccer White Banner */
+.soccer-banner-bg {
+  background: #ffffff; /* Solid White */
+  color: #212529; /* Dark text */
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Dark borders for the logo zones on the white card */
+.logo-zone-dark {
+  border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.logo-zone-right-dark {
+  border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile responsive borders for the white card */
 @media (max-width: 768px) {
-  .logo-zone {
+  .logo-zone-dark {
     border-right: none;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+  .logo-zone-right-dark {
+    border-left: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
