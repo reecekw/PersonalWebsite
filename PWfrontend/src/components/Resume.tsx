@@ -119,7 +119,7 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Volunteer Representative</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Aug 2022 – Aug 2024</span>
             </div>
-            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | San Pedro Sula, Honduras [cite: 28, 29]</h6>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | San Pedro Sula, Honduras</h6>
             <ul className="mt-3 mb-0 text-secondary">
               <li>Trained 20+ volunteers weekly, improving teaching effectiveness and interpersonal communication</li>
               <li>Led 100+ hours of community service projects, collaborating with leaders to support families and strengthen communities</li>

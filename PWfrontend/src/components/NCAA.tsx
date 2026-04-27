@@ -7,7 +7,7 @@ const PageTemplate: React.FC = () => {
       <h1 className="display-4 fw-bold mb-4 text-dark">NCAA</h1>
       
       <p className="lead text-muted mb-5">
-        I am going to fix NCAA D1 football and basketball how I want.
+        Under Construction
       </p>
       
       <div className="mt-5">

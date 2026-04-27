@@ -10,7 +10,7 @@ const MyTeams: React.FC = () => {
       <div className="text-center mb-5 resume-header-bg p-5">
         <h1 className="display-4 fw-bold text-white mb-3">My Teams</h1>
         <p className="lead text-white-50 mb-0">
-          The franchises and clubs I follow year-round.
+          The teams I follow year-round.
         </p>
       </div>
 
