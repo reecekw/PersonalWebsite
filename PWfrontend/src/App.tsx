@@ -4,7 +4,7 @@ import Resume from './components/Resume';
 import MaudiResume from './components/MaudiResume';
 import Ncaa from './components/NCAA';
 import WorldCup from './components/Mundial';
-import Intramural from './components/intramural';
+import Intramural from './components/MyTeams';
 
 const App: React.FC = () => {
   return (

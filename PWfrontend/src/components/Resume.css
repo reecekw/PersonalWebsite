@@ -159,3 +159,23 @@ body {
 .green-banner-bg p {
   color: #ffffff !important;
 }
+
+/* Horizontal Team Banners */
+.team-banner-bg {
+  background: linear-gradient(135deg, #16162a 0%, #1a2238 100%);
+  color: #ffffff;
+  border-radius: 1rem;
+  overflow: hidden; /* Ensures the dark background stays inside the rounded corners */
+}
+
+/* Adds a subtle line between the logo and the text on desktop */
+.logo-zone {
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .logo-zone {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}

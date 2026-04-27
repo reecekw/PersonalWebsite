@@ -1,16 +1,14 @@
-//Desktop/Other/PersonalWebsite/PWfrontend/src/components/Resume.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Resume.css';
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // <-- Add this new import
+import { FaGithub, FaLinkedin, FaGlobe } from 'react-icons/fa'; 
 
 const Resume: React.FC = () => {
   return (
     <div className="container mt-5 mb-5">
+      
       {/* Header Section */}
-     {/* Header Section */}
-      <header className="text-center mb-5 resume-header-bg">
-        {/* Profile Image - References the public folder */}
+      <header className="text-center mb-5 resume-header-bg p-5">
         <img 
           src="/profile.jpg" 
           alt="Reece Williams" 
@@ -19,15 +17,13 @@ const Resume: React.FC = () => {
         
         <h1 className="display-4 fw-bold text-white mb-3">Reece Williams</h1>
         
-        {/* Added fs-4 to increase the summary text size */}
         <p className="lead fs-4 mb-3">
-          Early-Career Product Manager with experience in data analysis <br /> 
-          and development using C#, SQL, Tableau, Python, and JavaScript.
+          Early-Career Data Analyst with experience in SQL, Python, and Tableau, <br />
+          delivering data-driven insights through dashboards and research analysis.
         </p>
-        <br />
-        {/* Removed 'small' and added fs-5 to make contact info larger */}
-        <p className="fs-5 mb-4 text-muted">
-          (737) 349-4771 | reecekwilliams428@gmail.com
+        
+        <p className="fs-5 mb-4 text-white-50">
+          (737) 349-4771 | reecekwilliams428@gmail.com | reecekw.is404.net
         </p>
         
         <div className="mt-4">
@@ -47,6 +43,14 @@ const Resume: React.FC = () => {
           >
             <FaLinkedin size={24} className="me-2" /> LinkedIn
           </a>
+          <a 
+            href="https://reecekw.is404.net" 
+            className="btn btn-lg btn-custom-outline rounded-pill px-4 mx-2 d-inline-flex align-items-center" 
+            target="_blank" 
+            rel="noreferrer"
+          >
+            <FaGlobe size={24} className="me-2" /> Portfolio
+          </a>
         </div>
       </header>
 
@@ -62,9 +66,9 @@ const Resume: React.FC = () => {
             </div>
             <p className="card-text text-muted mt-2 mb-3"><strong>Bachelor of Science: Information Systems</strong> | Provo, UT</p>
             <ul className="mb-0 text-secondary">
-              <li><strong>GPA:</strong> 3.71</li>
-              <li><strong>Coursework:</strong> Database Systems & Data Modeling, Machine Learning, Product Management and Systems Design, Data Analytics & Visualization, Web Development.</li>
-              <li><strong>Involvement:</strong> Co-Vice President of Activities of Association of Information Systems (AIS), Member of Collegiate Leadership Competition Club.</li>
+              <li><strong>GPA:</strong> 3.7 [cite: 9]</li>
+              <li><strong>Coursework:</strong> Product Management and Systems Design, Data Analytics & Visualization, Web Development [cite: 12]</li>
+              <li><strong>Involvement:</strong> Co-Vice President of Activities, Association of Information Systems (AIS); Member of Collegiate Leadership Competition Club [cite: 10, 11]</li>
             </ul>
           </div>
         </div>
@@ -75,7 +79,7 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Cascadia College</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Apr 2022</span>
             </div>
-            <p className="card-text text-muted mt-2 mb-0"><strong>Associate of Arts, Integrated Studies</strong> | Bothell, WA (GPA: 3.86)</p>
+            <p className="card-text text-muted mt-2 mb-0"><strong>Associate of Arts, Integrated Studies</strong> | Bothell, WA (GPA: 3.86) [cite: 38]</p>
           </div>
         </div>
       </section>
@@ -91,11 +95,11 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Data Analyst</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Mar 2026 – Present</span>
             </div>
-            <h6 className="card-subtitle mt-2 text-primary fw-semibold">BYU Auxiliaries & Program Technologies | Provo, UT</h6>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">BYU Auxiliaries & Program Technologies | Provo, UT [cite: 18, 19]</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Built Tableau Dashboards and all that.</li>
-              <li>Helped people out.</li>
-              <li>I am him.</li>
+              <li>Developed 10+ Tableau dashboards for stakeholders, improving data-driven decision-making across operations [cite: 20]</li>
+              <li>Gathered and translated business requirements into Tableau dashboards, improving stakeholder usability for 50+ users [cite: 21]</li>
+              <li>Extracted and transformed data using SQL, enabling accurate and efficient analysis of key datasets [cite: 22]</li>
             </ul>
           </div>
         </div>
@@ -107,11 +111,11 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Student Researcher</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Apr 2025 – Dec 2025</span>
             </div>
-            <h6 className="card-subtitle mt-2 text-primary fw-semibold">BYU Marriott Adjunct Experience Research Team | Provo, UT</h6>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">BYU Marriott Adjunct Experience Research Team | Provo, UT [cite: 23, 24]</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Conducted 35 1x1 qualitative interviews with adjunct faculty, gathering insights on experience and institutional support.</li>
-              <li>Analyzed interview transcripts using AI-assisted (Gemini) qualitative analysis to identify recurring themes.</li>
-              <li>Synthesized and presented research findings to 100+ faculty and university administrators at BYU Belonging Conference.</li>
+              <li>Conducted 35+ 1x1 qualitative interviews with adjunct faculty, gathering insights on experience and institutional support [cite: 25]</li>
+              <li>Analyzed interview transcripts using AI-assisted (Gemini) qualitative analysis to identify recurring themes [cite: 26]</li>
+              <li>Synthesized and presented research findings to 100+ faculty and university administrators at BYU Belonging Conference [cite: 27]</li>
             </ul>
           </div>
         </div>
@@ -123,47 +127,67 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Volunteer Representative</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Aug 2022 – Aug 2024</span>
             </div>
-            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | Honduras</h6>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | San Pedro Sula, Honduras [cite: 28, 29]</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Trained 20+ volunteers weekly, improving teaching effectiveness, accountability tracking, and interpersonal communication.</li>
-              <li>Led 100+ hours of community service projects, collaborating with leaders to support families and strengthen communities.</li>
-              <li>Achieved Spanish fluency, enabling cross-cultural relationships, public presentations, and leadership in diverse settings.</li>
+              <li>Trained 20+ volunteers weekly, improving teaching effectiveness and interpersonal communication [cite: 30]</li>
+              <li>Led 100+ hours of community service projects, collaborating with leaders to support families and strengthen communities [cite: 31]</li>
+              <li>Achieved Spanish fluency, enabling cross-cultural relationships, public presentations, and leadership in diverse settings [cite: 32]</li>
             </ul>
           </div>
         </div>
       </section>
 
-      {/* Skills & Projects Section */}
+      {/* Technical Skills Section */}
       <section className="mb-5">
-        <h2 className="section-title">Technical Skills & Projects</h2>
+        <h2 className="section-title">Technical Skills</h2>
         <div className="card shadow-sm border-0 mb-4 hover-card">
           <div className="card-body p-4">
             <div className="row g-4">
               <div className="col-md-6">
-                <div className="p-3 bg-light rounded">
-                  <h5 className="h6 fw-bold text-dark">Artificial Intelligence</h5>
-                  <p className="mb-0 text-secondary small">Prompt engineering, generative AI (ChatGPT, Gemini, Cursor), AI-assisted data analysis</p>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="p-3 bg-light rounded">
-                  <h5 className="h6 fw-bold text-dark">Data & Analytics</h5>
-                  <p className="mb-0 text-secondary small">SQL, Tableau, Advanced Excel, VBA</p>
-                </div>
-              </div>
-              <div className="col-md-6">
-                <div className="p-3 bg-light rounded">
-                  <h5 className="h6 fw-bold text-dark">Development & Cloud</h5>
-                  <p className="mb-0 text-secondary small">Python, JavaScript, HTML/CSS, AWS (EC2, S3), Git</p>
+                <div className="p-3 bg-light rounded h-100">
+                  <h5 className="h6 fw-bold text-dark">Data & BI</h5>
+                  <p className="mb-0 text-secondary small">SQL, Tableau, Advanced Excel, VBA [cite: 14]</p>
                 </div>
               </div>
               <div className="col-md-6">
                 <div className="p-3 bg-light rounded h-100">
-                  <h5 className="h6 fw-bold text-dark">Featured Project</h5>
-                  <p className="mb-0 text-secondary small">Designed and normalized database, built dashboard (SQL, Excel, Tableau) to improve stakeholder decision-making (2025).</p>
+                  <h5 className="h6 fw-bold text-dark">Development & Cloud</h5>
+                  <p className="mb-0 text-secondary small">Python, JavaScript, HTML/CSS, .NET, React, AWS (EC2, S3), Git [cite: 14, 16]</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="p-3 bg-light rounded h-100">
+                  <h5 className="h6 fw-bold text-dark">Artificial Intelligence</h5>
+                  <p className="mb-0 text-secondary small">Prompt Engineering, Generative AI (ChatGPT, Gemini, Cursor) [cite: 15]</p>
+                </div>
+              </div>
+              <div className="col-md-6">
+                <div className="p-3 bg-light rounded h-100">
+                  <h5 className="h6 fw-bold text-dark">Certifications</h5>
+                  <p className="mb-0 text-secondary small">Professional Scrum Master (PSM 1), Scrum.org (2026) [cite: 16]</p>
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section className="mb-5">
+        <h2 className="section-title">Projects</h2>
+        <div className="card shadow-sm border-0 hover-card">
+          <div className="card-body p-4">
+            <ul className="mb-0 text-secondary lh-lg">
+              <li className="mb-2">
+                <strong>Relational Database & Dashboard:</strong> Designed and normalized relational database (SQL, Excel, Tableau), enabling efficient stakeholder reporting and improved decision-making (2025) [cite: 34]
+              </li>
+              <li className="mb-2">
+                <strong>Machine Learning Pipeline Application:</strong> Developed full-stack application (React, .NET, Entity Framework) with ML pipeline and secure authentication (HTTPS), supporting scalable and secure user data management (2026) [cite: 35]
+              </li>
+              <li>
+                <strong>Portfolio Website:</strong> Developed personal portfolio website (React, .NET), showcasing projects and technical skills with responsive UI [cite: 36]
+              </li>
+            </ul>
           </div>
         </div>
       </section>
@@ -174,15 +198,15 @@ const Resume: React.FC = () => {
         <div className="card shadow-sm border-0 hover-card">
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
-              <li><strong>Eagle Scout</strong>, Scouts of America (2020)</li>
-              <li><strong>Regional Champion in Global Business</strong>, Future Business Leaders of America (FBLA) (2020)</li>
-              <li><strong>Varsity Boys Soccer Coach’s Leadership Award</strong> (2022)</li>
-              <li><strong>Spanish immersion education</strong> (elementary level)</li>
+              <li><strong>Eagle Scout</strong>, Scouts of America (2020) [cite: 39]</li>
+              <li><strong>Regional Champion in Global Business</strong>, Future Business Leaders of America (FBLA) (2020) [cite: 40]</li>
+              <li><strong>Varsity Boys Soccer Coach’s Leadership Award</strong> (2022) [cite: 41]</li>
             </ul>
           </div>
         </div>
       </section>
-        {/* Meet Maudi Banner */}
+      
+      {/* Meet Maudi Banner */}
       <section className="mb-5 text-center mt-5">
         <div className="card shadow-lg border-0 coral-banner-bg p-5 hover-card">
           <h2 className="text-white fw-bold mb-3 display-6">Meet My Wife, Maudi!</h2>
@@ -215,16 +239,15 @@ const Resume: React.FC = () => {
               World Cup
             </Link>
             <Link 
-              to="/intramural" 
+              to="/MyTeams" 
               className="btn btn-lg btn-light rounded-pill px-5 fw-bold text-dark shadow-sm hover-card"
             >
-              Intramural
+              My Teams
             </Link>
           </div>
         </div>
       </section>
     </div>
-  
   );
 };
 

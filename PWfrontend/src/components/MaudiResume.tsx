@@ -1,4 +1,3 @@
-//Desktop/Other/PersonalWebsite/PWfrontend/src/components/MaudiResume.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Resume.css';
@@ -17,9 +16,9 @@ const MaudiResume: React.FC = () => {
         
         <h1 className="display-4 fw-bold text-white mb-3">Maudi Williams</h1>
         
-        {/* Added fs-4 to increase the summary text size */}
         <p className="lead fs-4 mb-3">
-         Baddie who works in skilled nursing.  Best marketer and admissions coordinator ever.
+         Dynamic Healthcare Marketer & Admissions Coordinator driving census growth <br />
+         and delivering exceptional patient experiences in skilled nursing facilities.
         </p>
         <br />
       </header>
@@ -28,7 +27,7 @@ const MaudiResume: React.FC = () => {
       <section className="mb-5">
         <h2 className="section-title">Experience</h2>
         
-        {/* Data Analyst */}
+        {/* Stonehenge */}
         <div className="card shadow-sm border-0 mb-4 hover-card">
           <div className="card-body p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
@@ -37,14 +36,14 @@ const MaudiResume: React.FC = () => {
             </div>
             <h6 className="card-subtitle mt-2 text-primary fw-semibold">Stonehenge of Orem | Orem, UT</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Baddie.</li>
-              <li>Amazing.</li>
-              <li>Stunning.</li>
+              <li>Drive facility census growth by building and maintaining strategic relationships with local hospitals, physicians, and community partners.</li>
+              <li>Develop and execute targeted marketing campaigns to highlight facility amenities, clinical capabilities, and quality of care.</li>
+              <li>Conduct facility tours for prospective residents and their families, addressing concerns and showcasing a premier healthcare environment.</li>
             </ul>
           </div>
         </div>
 
-        {/* Student Researcher */}
+        {/* Provo Rehab */}
         <div className="card shadow-sm border-0 mb-4 hover-card">
           <div className="card-body p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
@@ -53,25 +52,25 @@ const MaudiResume: React.FC = () => {
             </div>
             <h6 className="card-subtitle mt-2 text-primary fw-semibold">Provo Rehab | Provo, UT</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Dealt with a bad boss.</li>
-              <li>Cutie.</li>
-              <li>Baddie.</li>
+              <li>Managed the end-to-end patient intake process, ensuring seamless transitions from acute care settings to the rehabilitation facility.</li>
+              <li>Verified complex Medicare, Medicaid, and commercial insurance benefits, communicating financial responsibilities clearly to patients and families.</li>
+              <li>Collaborated daily with clinical teams, discharge planners, and social workers to evaluate patient readiness and facility capacity.</li>
             </ul>
           </div>
         </div>
 
-        {/* Volunteer */}
+        {/* Estrella */}
         <div className="card shadow-sm border-0 mb-3 hover-card">
           <div className="card-body p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
-              <h3 className="h5 card-title fw-bold mb-0">Something</h3>
+              <h3 className="h5 card-title fw-bold mb-0">Guest Relations Coordinator</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Nov 2024 – May 2025</span>
             </div>
             <h6 className="card-subtitle mt-2 text-primary fw-semibold">Estrella | Glendale, AZ</h6>
             <ul className="mt-3 mb-0 text-secondary">
-              <li>Beautiful.</li>
-              <li>Amazing.</li>
-              <li>Her.</li>
+              <li>Served as the primary point of contact for residents, families, and vendors, ensuring a welcoming and professional front-office environment.</li>
+              <li>Streamlined administrative workflows, including answering multi-line phone systems, managing secure medical records, and processing facility mail.</li>
+              <li>Resolved patient and family grievances promptly, escalating critical clinical concerns to the Director of Nursing when necessary.</li>
             </ul>
           </div>
         </div>
@@ -83,8 +82,8 @@ const MaudiResume: React.FC = () => {
         <div className="card shadow-sm border-0 hover-card">
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
-              <li><strong>Wife</strong> to an amazing husband</li>
-              <li><strong>JUCO volleyball</strong> - Mesa CC</li>
+              <li><strong>Collegiate Athlete:</strong> JUCO Volleyball at Mesa Community College</li>
+              <li><strong>Supportive Wife:</strong> Married to an incredibly talented tech/data analyst</li>
             </ul>
           </div>
         </div>
