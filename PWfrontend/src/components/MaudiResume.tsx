@@ -31,7 +31,7 @@ const MaudiResume: React.FC = () => {
         <div className="card shadow-sm border-0 mb-4 hover-card">
           <div className="card-body p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
-              <h3 className="h5 card-title fw-bold mb-0">Healthcare Marketer</h3>
+              <h3 className="h5 card-title fw-bold mb-0">Admissions & Marketing Director</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Sept 2025 – Present</span>
             </div>
             <h6 className="card-subtitle mt-2 text-primary fw-semibold">Stonehenge of Orem | Orem, UT</h6>
@@ -63,7 +63,7 @@ const MaudiResume: React.FC = () => {
         <div className="card shadow-sm border-0 mb-3 hover-card">
           <div className="card-body p-4">
             <div className="d-flex justify-content-between align-items-center flex-wrap">
-              <h3 className="h5 card-title fw-bold mb-0">Guest Relations Coordinator</h3>
+              <h3 className="h5 card-title fw-bold mb-0">Admissions Coordinator & HR assistant</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Nov 2024 – May 2025</span>
             </div>
             <h6 className="card-subtitle mt-2 text-primary fw-semibold">Estrella | Glendale, AZ</h6>
@@ -71,6 +71,22 @@ const MaudiResume: React.FC = () => {
               <li>Served as the primary point of contact for residents, families, and vendors, ensuring a welcoming and professional front-office environment.</li>
               <li>Streamlined administrative workflows, including answering multi-line phone systems, managing secure medical records, and processing facility mail.</li>
               <li>Resolved patient and family grievances promptly, escalating critical clinical concerns to the Director of Nursing when necessary.</li>
+            </ul>
+          </div>
+        </div>
+
+  {/* Mission*/}
+        <div className="card shadow-sm border-0 mb-3 hover-card">
+          <div className="card-body p-4">
+            <div className="d-flex justify-content-between align-items-center flex-wrap">
+                <h3 className="h5 card-title fw-bold mb-0">Volunteer Representative</h3>
+              <span className="badge badge-custom mt-2 mt-md-0">May 2023 – Oct 2024</span>
+            </div>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | San Pedro Sula, Honduras</h6>
+            <ul className="mt-3 mb-0 text-secondary">
+              <li>Gave tours to visitors and conducted informational sessions about the church's mission and activities.</li>
+              <li>Participated in 100+ hours of community service projects, collaborating with leaders to support families and strengthen communities.</li>
+              <li>Taught people from many different cultures, fostering understanding and connection.</li>
             </ul>
           </div>
         </div>
@@ -83,7 +99,7 @@ const MaudiResume: React.FC = () => {
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
               <li><strong>Collegiate Athlete:</strong> JUCO Volleyball at Mesa Community College</li>
-              <li><strong>Supportive Wife:</strong> Married to an incredibly talented tech/data analyst</li>
+              <li><strong>Student Ambassador</strong> at Mesa Community College</li>
             </ul>
           </div>
         </div>
@@ -94,7 +110,7 @@ const MaudiResume: React.FC = () => {
         <div className="card shadow-lg border-0 resume-header-bg p-5 hover-card">
           <h2 className="text-white fw-bold mb-3 display-6">Check out Reece's Resume!</h2>
           <p className="text-white-50 mb-4 fs-5">
-            Head back to the main page to see my husband's tech and data portfolio.
+            Head back to the main page to see my husband's resume!
           </p>
           <div>
             <Link to="/" className="btn btn-lg btn-light rounded-pill px-5 fw-bold text-dark shadow-sm">

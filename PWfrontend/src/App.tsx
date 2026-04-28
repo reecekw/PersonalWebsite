@@ -1,14 +1,18 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ScrollToTop from './components/ScrollToTop'; // <-- 1. Add this import!
+
 import Resume from './components/Resume';
 import MaudiResume from './components/MaudiResume';
 import Ncaa from './components/NCAA';
-import WorldCup from './components/Mundial';
+import Mundial from './components/Mundial';
 import MyTeams from './components/MyTeams';
 
 const App: React.FC = () => {
   return (
     <Router>
+      <ScrollToTop /> {/* <-- 2. Drop it right here! */}
+      
       <div className="d-flex flex-column min-vh-100">
         
         {/* Main Content Area */}
@@ -16,10 +20,9 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Resume />} />
             <Route path="/maudi" element={<MaudiResume />} />
-            {/* Add your new routes here: */}
-            <Route path="/NCAA" element={<Ncaa />} />
-            <Route path="/Mundial" element={<WorldCup />} />
-            <Route path="/MyTeams" element={<MyTeams />} />
+            <Route path="/ncaa" element={<Ncaa />} />
+            <Route path="/mundial" element={<Mundial />} />
+            <Route path="/my-teams" element={<MyTeams />} />
           </Routes>
         </main>
         
