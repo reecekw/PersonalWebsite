@@ -82,7 +82,7 @@ const MaudiResume: React.FC = () => {
                 <h3 className="h5 card-title fw-bold mb-0">Volunteer Representative</h3>
               <span className="badge badge-custom mt-2 mt-md-0">May 2023 – Oct 2024</span>
             </div>
-            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | San Pedro Sula, Honduras</h6>
+            <h6 className="card-subtitle mt-2 text-primary fw-semibold">The Church of Jesus Christ of Latter-day Saints | New York & Dallas, Texas</h6>
             <ul className="mt-3 mb-0 text-secondary">
               <li>Gave tours to visitors and conducted informational sessions about the church's mission and activities.</li>
               <li>Participated in 100+ hours of community service projects, collaborating with leaders to support families and strengthen communities.</li>
