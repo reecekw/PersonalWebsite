@@ -231,7 +231,7 @@ const Resume: React.FC = () => {
               World Cup
             </Link>
             <Link 
-              to="/MyTeams" 
+              to="/my-teams" 
               className="btn btn-lg btn-light rounded-pill px-5 fw-bold text-dark shadow-sm hover-card"
             >
               My Teams
