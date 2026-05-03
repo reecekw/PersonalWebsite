@@ -16,7 +16,7 @@ const Ncaa: React.FC = () => {
 
       {/* The Problem Section */}
       <div className="row justify-content-center mb-5">
-        <div className="col-lg-10">
+        <div className="col-lg-12">
           <div className="card shadow-sm border-0 hover-card">
             <div className="card-body p-5 bg-light">
               <h2 className="fw-bold mb-4 border-bottom pb-2">The Problem</h2>
@@ -33,9 +33,9 @@ const Ncaa: React.FC = () => {
 
       {/* College Football Section */}
       <div className="row justify-content-center mb-5">
-        <div className="col-lg-10">
+        <div className="col-lg-12">
           <div className="card shadow-lg border-0 hover-card">
-            <div className="card-body p-5">
+            <div className="card-body p-4 p-md-5">
               <div className="d-flex align-items-center mb-4 border-bottom pb-2">
                 <h2 className="fw-bold mb-0">College Football Restructure</h2>
               </div>
@@ -53,21 +53,20 @@ const Ncaa: React.FC = () => {
                 </ul>
               </div>
 
-              <h5 className="fw-bold mb-3">View the Football Divisions (Tableau)</h5>
-              <div className="d-flex flex-wrap gap-3">
-                <a href="https://public.tableau.com/shared/ZT8X2ZF92?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-primary fw-bold px-4 rounded-pill">
-                  D1 Football Map
-                </a>
-                <a href="https://public.tableau.com/shared/2XDN5G6FQ?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-primary fw-bold px-4 rounded-pill">
-                  D2 Football Map
-                </a>
-                <a href="https://public.tableau.com/shared/CBTS42NNP?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-primary fw-bold px-4 rounded-pill">
-                  D3 Football Map
-                </a>
-                <a href="https://public.tableau.com/shared/54N3BXP4C?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-primary fw-bold px-4 rounded-pill">
-                  D4 Football Map
-                </a>
+              <div className="alert alert-primary mb-4" role="alert">
+                <strong>Interactive Map:</strong> Use the Division filter on the right side of the dashboard below to click through and explore Divisions 1 through 4!
               </div>
+
+              {/* Tableau Football Embed */}
+              <div className="ratio border rounded shadow-sm" style={{ height: '850px' }}>
+                <iframe 
+                  src="https://public.tableau.com/views/NCAA_17777738957950/Football?:showVizHome=no&:embed=true" 
+                  title="NCAA Football Restructure"
+                  allowFullScreen
+                  style={{ border: 'none', width: '100%', height: '100%' }}
+                ></iframe>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -75,9 +74,9 @@ const Ncaa: React.FC = () => {
 
       {/* College Basketball Section */}
       <div className="row justify-content-center mb-5">
-        <div className="col-lg-10">
+        <div className="col-lg-12">
           <div className="card shadow-lg border-0 hover-card">
-            <div className="card-body p-5">
+            <div className="card-body p-4 p-md-5">
               <div className="d-flex align-items-center mb-4 border-bottom pb-2">
                 <h2 className="fw-bold mb-0">College Basketball Restructure</h2>
               </div>
@@ -96,15 +95,20 @@ const Ncaa: React.FC = () => {
                 </ul>
               </div>
 
-              <h5 className="fw-bold mb-3">View the Basketball Divisions (Tableau)</h5>
-              <div className="d-flex flex-wrap gap-3">
-                <a href="https://public.tableau.com/shared/22222RQS5?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-danger fw-bold px-4 rounded-pill">
-                  D1 Basketball Map
-                </a>
-                <a href="https://public.tableau.com/shared/XTQM65N47?:display_count=n&:origin=viz_share_link" target="_blank" rel="noreferrer" className="btn btn-outline-danger fw-bold px-4 rounded-pill">
-                  D2 Basketball Map
-                </a>
+              <div className="alert alert-danger mb-4" role="alert">
+                <strong>Interactive Map:</strong> Use the Division filter on the right side of the dashboard below to toggle between Division 1 and Division 2!
               </div>
+
+              {/* Tableau Basketball Embed */}
+              <div className="ratio border rounded shadow-sm" style={{ height: '850px' }}>
+                <iframe 
+                  src="https://public.tableau.com/views/NCAA_17777738957950/Basketball?:showVizHome=no&:embed=true" 
+                  title="NCAA Basketball Restructure"
+                  allowFullScreen
+                  style={{ border: 'none', width: '100%', height: '100%' }}
+                ></iframe>
+              </div>
+
             </div>
           </div>
         </div>
