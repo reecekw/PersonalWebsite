@@ -10,7 +10,7 @@ const Ncaa: React.FC = () => {
       <div className="text-center mb-5 resume-header-bg p-5 rounded shadow-sm">
         <h1 className="display-4 fw-bold text-white mb-3">Fixing College Sports</h1>
         <p className="lead text-white-50 mb-0">
-          A data-driven proposal to save local rivalries and restructure the NCAA.
+          My proposal to save College Football & Basketball.
         </p>
       </div>
 

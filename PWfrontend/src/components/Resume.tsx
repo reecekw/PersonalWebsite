@@ -58,7 +58,7 @@ const Resume: React.FC = () => {
             </div>
             <p className="card-text text-muted mt-2 mb-3"><strong>Bachelor of Science: Information Systems</strong> | Provo, UT</p>
             <ul className="mb-0 text-secondary">
-              <li><strong>GPA:</strong> 3.7</li>
+              <li><strong>GPA:</strong> 3.74</li>
               <li><strong>Coursework:</strong> Product Management and Systems Design, Data Analytics & Visualization, Web Development</li>
               <li><strong>Involvement:</strong> Co-Vice President of Activities, Association of Information Systems (AIS); Member of Collegiate Leadership Competition Club</li>
             </ul>
