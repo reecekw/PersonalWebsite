@@ -71,7 +71,7 @@ const Resume: React.FC = () => {
               <h3 className="h5 card-title fw-bold mb-0">Cascadia College</h3>
               <span className="badge badge-custom mt-2 mt-md-0">Apr 2022</span>
             </div>
-            <p className="card-text text-muted mt-2 mb-0"><strong>Associate of Arts, Integrated Studies</strong> | Bothell, WA (GPA: 3.86)</p>
+            <p className="card-text text-muted mt-2 mb-0"><strong>Associate of Arts, Integrated Studies</strong> | Bothell, WA (GPA: 3.82)</p>
           </div>
         </div>
       </section>
@@ -190,7 +190,7 @@ const Resume: React.FC = () => {
         <div className="card shadow-sm border-0 hover-card">
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
-              <li><strong>Eagle Scout</strong>, Scouts of America (2020)</li>
+              <li><strong>Eagle Scout</strong>, Boy Scouts of America (2020)</li>
               <li><strong>Regional Champion in Global Business</strong>, Future Business Leaders of America (FBLA) (2020)</li>
               <li><strong>Varsity Boys Soccer Coach’s Leadership Award</strong> (2022)</li>
             </ul>
@@ -203,7 +203,7 @@ const Resume: React.FC = () => {
         <div className="card shadow-lg border-0 coral-banner-bg p-5 hover-card">
           <h2 className="text-white fw-bold mb-3 display-6">Meet My Wife, Maudi!</h2>
           <p className="text-white-50 mb-4 fs-5">
-            She is incredible. Check out her resume to see what she is up to.
+          She is a remarkable woman with a strong work ethic and a passion for excellence. Check out her resume to see what she is up to.
           </p>
           <div>
             <Link to="/maudi" className="btn btn-lg btn-light rounded-pill px-5 fw-bold text-dark shadow-sm">
