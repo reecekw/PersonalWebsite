@@ -195,7 +195,7 @@ const Resume: React.FC = () => {
           <div className="card-body p-4">
             <ul className="mb-0 text-secondary lh-lg">
               <li>Associate of Arts, Integrated Studies at Cascadia College, Bothell, WA (GPA: 3.86) – Apr 2022</li>
-              <li>Eagle Scout, Scouts of America (2020)</li>
+              <li>Eagle Scout, Boy Scouts of America (2020)</li>
               <li>Future Business Leaders of America (FBLA), Regional Champion in Global Business (2020)</li>
               <li>Varsity Boys Soccer Coach’s Leadership Award (2022)</li>
             </ul>
