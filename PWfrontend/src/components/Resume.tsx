@@ -213,9 +213,11 @@ const Resume: React.FC = () => {
             >
               NCAA
             </Link>
-            
           </div>
-    {/* Meet Maudi Banner */}
+        </div>
+      </section>
+
+      {/* Meet Maudi Banner */}
       <section className="mb-5 text-center mt-5">
         <div className="card shadow-lg border-0 coral-banner-bg p-5 hover-card">
           <h2 className="text-white fw-bold mb-3 display-6">Meet My Wife, Maudi!</h2>
@@ -227,8 +229,6 @@ const Resume: React.FC = () => {
               View Maudi's Resume
             </Link>
           </div>
-        </div>
-      </section>
         </div>
       </section>
     </div>
