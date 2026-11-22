@@ -7,6 +7,9 @@ import MaudiResume from './components/MaudiResume';
 import Ncaa from './components/NCAA';
 import Mundial from './components/Mundial';
 import MyTeams from './components/MyTeams';
+import TriviaPlayer from './components/trivia/TriviaPlayer';
+import TriviaHost from './components/trivia/TriviaHost';
+import TriviaScreen from './components/trivia/TriviaScreen';
 
 const App: React.FC = () => {
   return (
@@ -23,6 +26,9 @@ const App: React.FC = () => {
             <Route path="/ncaa" element={<Ncaa />} />
             <Route path="/mundial" element={<Mundial />} />
             <Route path="/my-teams" element={<MyTeams />} />
+            <Route path="/trivia" element={<TriviaPlayer />} />
+            <Route path="/trivia/host" element={<TriviaHost />} />
+            <Route path="/trivia/screen" element={<TriviaScreen />} />
           </Routes>
         </main>
         
