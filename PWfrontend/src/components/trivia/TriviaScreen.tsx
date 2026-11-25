@@ -6,8 +6,37 @@ import QRCode from 'qrcode';
 import { FaMusic, FaExpand } from 'react-icons/fa';
 import { supabase, supabaseConfigured } from '../../lib/supabase';
 import type { Game, Submission, Team } from './types';
-import { fmtPoints, rankTeams, typeLabel } from './types';
+import { fmtPoints, rankTeams, sizeClass, typeLabel } from './types';
 import './Trivia.css';
+
+// Pictures side by side, as large as the screen allows, each with an optional caption under it.
+const Pictures: React.FC<{ urls: string[]; captions?: string[]; big?: boolean }> = ({ urls, captions = [], big }) => (
+  <div className={`tv-pics n${Math.min(urls.length, 3)}${big ? ' big' : ''}`}>
+    {urls.map((u, i) => (
+      <figure key={u} className="tv-pic">
+        <img src={u} alt={captions[i] ?? ''} />
+        {captions[i] && <figcaption>{captions[i]}</figcaption>}
+      </figure>
+    ))}
+  </div>
+);
+
+// Scores along the bottom of the screen. Scrolls when there are too many teams to fit.
+const Ticker: React.FC<{ teams: ReturnType<typeof rankTeams> }> = ({ teams }) => {
+  const scroll = teams.length > 6;
+  const row = (copy: string) => teams.map((t) => (
+    <span key={t.id + copy} className={`tv-tick${t.rank === 1 ? ' first' : ''}`} aria-hidden={copy ? true : undefined}>
+      <b>{t.rank}</b><span className="nm">{t.name}</span><em>{fmtPoints(t.score)}</em>
+    </span>
+  ));
+  return (
+    <div className="tv-ticker" aria-label="Scores">
+      <div className={`tv-ticker-track${scroll ? ' scroll' : ''}`} style={scroll ? { animationDuration: `${teams.length * 4}s` } : undefined}>
+        {row('')}{scroll && row('-2')}
+      </div>
+    </div>
+  );
+};
 
 const TriviaScreen: React.FC = () => {
   const [allowed, setAllowed] = useState<boolean | null>(null);
@@ -93,9 +122,10 @@ const TriviaScreen: React.FC = () => {
   const answered = game.position !== null ? subs.filter((s) => s.position === game.position).length : 0;
   const showJoin = game.status === 'lobby';
   const isTie = q?.type === 'tiebreaker';
+  const showTicker = teams.length > 0 && ['open', 'locked', 'reveal'].includes(game.status);
 
   return (
-    <div className="tv">
+    <div className={`tv${showTicker ? ' with-ticker' : ''}`}>
       <button type="button" className="tv-fs" onClick={fullscreen} aria-label="Full screen"><FaExpand /></button>
 
       {showJoin && (
@@ -121,14 +151,13 @@ const TriviaScreen: React.FC = () => {
             <span>{isTie ? 'Tiebreaker' : `Question ${q.number} of ${q.total}`}</span>
             <span>{typeLabel[q.type] ?? ''}{q.points > 0 ? ` · ${fmtPoints(q.points)} pt${q.points === 1 ? '' : 's'}` : ''}</span>
           </div>
-          <h1 className="tv-q">{q.question}</h1>
+          <h1 className={`tv-q ${sizeClass(q.question)}${q.image_urls.length ? ' with-pics' : ''}`}>{q.question}</h1>
           {q.has_audio && <div className="tv-music"><FaMusic /> <span>Listen closely</span></div>}
-          {q.image_urls.length > 0 && (
-            <div className="tv-imgs">{q.image_urls.map((u) => <img key={u} src={u} alt="" />)}</div>
-          )}
+          {q.image_urls.length > 0 && <Pictures urls={q.image_urls} captions={q.captions} />}
           {q.choices.length > 0 && (
             <div className="tv-choices">{q.choices.map((c) => <div key={c} className="tv-choice">{c}</div>)}</div>
           )}
+          {q.hint && <div className="tv-hint"><span className="tv-hint-label">Hint</span><p>{q.hint}</p></div>}
           <div className="tv-foot">
             {game.status === 'locked'
               ? <span className="tv-pill locked">Answers locked</span>
@@ -139,12 +168,13 @@ const TriviaScreen: React.FC = () => {
       )}
 
       {q && game.status === 'reveal' && game.reveal && (
-        <div className="tv-question">
+        <div className="tv-question tv-reveal">
           <div className="tv-meta"><span>{isTie ? 'Tiebreaker' : `Question ${q.number} of ${q.total}`}</span><span>Answer</span></div>
           <p className="tv-q small-q">{q.question}</p>
-          <div className="tv-answer">{game.reveal.answer}</div>
-          {game.reveal.image_urls.length > 0 && (
-            <div className="tv-imgs">{game.reveal.image_urls.map((u) => <img key={u} src={u} alt="" />)}</div>
+          {game.reveal.image_urls.length > 0 && <Pictures urls={game.reveal.image_urls} captions={game.reveal.captions} big />}
+          {/* When every picture has its own answer caption, the captions are the answer. */}
+          {!(game.reveal.captions?.length && game.reveal.captions.length === game.reveal.image_urls.length) && (
+            <div className={`tv-answer ${sizeClass(game.reveal.answer)}`}>{game.reveal.answer}</div>
           )}
         </div>
       )}
@@ -169,6 +199,8 @@ const TriviaScreen: React.FC = () => {
           {ranked.length > 12 && <p className="tv-muted">+ {ranked.length - 12} more teams</p>}
         </div>
       )}
+
+      {showTicker && <Ticker teams={ranked} />}
     </div>
   );
 };

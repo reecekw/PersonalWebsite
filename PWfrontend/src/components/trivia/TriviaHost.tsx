@@ -118,6 +118,11 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
   const [confirmEnd, setConfirmEnd] = useState(false);
   const [audioUrls, setAudioUrls] = useState<{ q: string; a: string }>({ q: '', a: '' });
   const [hostImgs, setHostImgs] = useState<{ q: string[]; a: string[] }>({ q: [], a: [] });
+  const [autoScores, setAutoScores] = useState<boolean>(() => {
+    try { return localStorage.getItem('trivia-auto-scores') !== 'off'; } catch { return true; }
+  });
+  const gameRef = useRef<Game | null>(null);
+  const scoresTimer = useRef<number | undefined>(undefined);
   const clipRef = useRef<HTMLAudioElement>(null);
   const chorusRef = useRef<HTMLAudioElement>(null);
   const stopAudio = () => { clipRef.current?.pause(); chorusRef.current?.pause(); };
@@ -158,6 +163,9 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
       .subscribe();
     return () => { supabase.removeChannel(channel); };
   }, [gameId, refreshTeams, refreshSubs]);
+
+  useEffect(() => { gameRef.current = game; }, [game]);
+  useEffect(() => () => window.clearTimeout(scoresTimer.current), []);
 
   const ordered = useMemo(() => [...questions].sort((a, b) => a.position - b.position), [questions]);
   const numberOf = (pos: number) => ordered.findIndex((q) => q.position === pos) + 1;
@@ -219,17 +227,38 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
       choices: splitList(q.choices, '|'),
       points: Number(q.points),
       image_urls,
+      captions: splitList(q.question_captions),
+      hint: null,
       has_audio: Boolean(q.audio_file),
     };
+    window.clearTimeout(scoresTimer.current);
     stopAudio();
     await updateGame({ status: 'open', position: q.position, current, reveal: null, total: ordered.length });
+  };
+
+  const setHint = async (hint: string | null) => {
+    if (!game?.current) return;
+    await updateGame({ current: { ...game.current, hint } });
+  };
+
+  const toggleAutoScores = (on: boolean) => {
+    setAutoScores(on);
+    try { localStorage.setItem('trivia-auto-scores', on ? 'on' : 'off'); } catch { /* ignore */ }
   };
 
   const reveal = async () => {
     if (!cur) return;
     const image_urls = await signedUrls(splitList(cur.answer_image));
     clipRef.current?.pause();
-    await updateGame({ status: 'reveal', reveal: { position: cur.position, answer: cur.answer ?? '', image_urls } });
+    await updateGame({ status: 'reveal', reveal: { position: cur.position, answer: cur.answer ?? '', image_urls, captions: splitList(cur.answer_captions) } });
+    if (autoScores) {
+      const pos = cur.position;
+      window.clearTimeout(scoresTimer.current);
+      scoresTimer.current = window.setTimeout(() => {
+        const g = gameRef.current;
+        if (g && g.status === 'reveal' && g.position === pos) updateGame({ status: 'scores' });
+      }, 10000);
+    }
     // Play the chorus with the reveal, if this question has one.
     if (chorusRef.current && audioUrls.a) {
       chorusRef.current.currentTime = 0;
@@ -341,6 +370,7 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
                 <p className="fs-5 fw-semibold mb-2">{cur.question}</p>
                 {cur.choices && <p className="small mb-2">{splitList(cur.choices, '|').join('   ·   ')}</p>}
                 <div className="trivia-host-answer">Answer: <strong>{cur.answer}</strong></div>
+                {cur.hint && <div className="trivia-host-hint mt-2"><strong>Hint{game.current?.hint ? ' (showing)' : ''}:</strong> <span className="trivia-pre">{cur.hint}</span></div>}
                 {cur.notes && <p className="small text-muted mt-2 mb-0">Note: {cur.notes}</p>}
                 {(hostImgs.q.length > 0 || hostImgs.a.length > 0) && (
                   <div className="d-flex flex-wrap gap-2 mt-2">
@@ -375,12 +405,19 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
                 <div className="d-flex flex-wrap gap-2 mt-3">
                   {status === 'open' && <button type="button" className="btn btn-dark" onClick={() => updateGame({ status: 'locked' })} disabled={busy}>Lock answers</button>}
                   {status === 'locked' && <button type="button" className="btn btn-outline-dark" onClick={() => updateGame({ status: 'open' })} disabled={busy}>Reopen answers</button>}
+                  {cur.hint && (status === 'open' || status === 'locked') && (game.current?.hint
+                    ? <button type="button" className="btn btn-outline-warning" onClick={() => setHint(null)} disabled={busy}>Hide hint</button>
+                    : <button type="button" className="btn btn-warning" onClick={() => setHint(cur.hint)} disabled={busy}>Show hint</button>)}
                   {(status === 'open' || status === 'locked') && <button type="button" className="btn btn-trivia" onClick={reveal} disabled={busy}>{cur.answer_audio ? 'Reveal answer + play chorus' : 'Reveal answer'}</button>}
                   {status === 'reveal' && <button type="button" className="btn btn-dark" onClick={() => updateGame({ status: 'scores' })} disabled={busy}>Show scoreboard</button>}
                   {status === 'scores' && <button type="button" className="btn btn-outline-dark" onClick={() => updateGame({ status: 'reveal' })} disabled={busy}>Back to answer</button>}
                   {(status === 'reveal' || status === 'scores') && (next
                     ? <button type="button" className="btn btn-trivia" onClick={() => send(next)} disabled={busy}>Next: {next.type === 'tiebreaker' ? 'tiebreaker' : `question ${numberOf(next.position)}`} →</button>
                     : <button type="button" className="btn btn-danger" onClick={endGame} disabled={busy}>Finish and show final scores</button>)}
+                </div>
+                <div className="form-check mt-2">
+                  <input className="form-check-input" type="checkbox" id="auto-scores" checked={autoScores} onChange={(e) => toggleAutoScores(e.target.checked)} />
+                  <label className="form-check-label small" htmlFor="auto-scores">Show the scoreboard automatically 10 seconds after each reveal</label>
                 </div>
               </div>
             )}
@@ -444,7 +481,7 @@ const HostConsole: React.FC<{ email: string; onSignOut: () => void }> = ({ email
                 {ordered.map((q, i) => (
                   <li key={q.id} className={q.position === game.position ? 'now' : curIndex >= 0 && i < curIndex ? 'done' : ''}>
                     <div className="flex-grow-1">
-                      <div className="small text-muted">{q.type === 'tiebreaker' ? 'Tiebreaker' : `#${i + 1}`} · {typeLabel[q.type] ?? q.type}{q.audio_file || q.answer_audio ? ' · song' : ''}</div>
+                      <div className="small text-muted">{q.type === 'tiebreaker' ? 'Tiebreaker' : `#${i + 1}`} · {typeLabel[q.type] ?? q.type}{q.audio_file || q.answer_audio ? ' · song' : ''}{q.hint ? ' · hint' : ''}</div>
                       <div className="fw-semibold">{q.question}</div>
                       <div className="small">Answer: {q.answer}</div>
                     </div>

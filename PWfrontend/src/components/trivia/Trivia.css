@@ -59,6 +59,7 @@
 .trivia-host { max-width: 1400px; padding-top: 1.5rem; padding-bottom: 2rem; }
 .trivia-host-code { font-size: 2.25rem; font-weight: 800; letter-spacing: 0.15em; color: var(--tv-deep); line-height: 1.1; }
 .trivia-host-answer { background: #fff4cf; border-radius: 0.5rem; padding: 0.5rem 0.75rem; }
+.trivia-host-hint { background: #e7f1f4; border-radius: 0.5rem; padding: 0.5rem 0.75rem; }
 .trivia-status { background: #e7f1f4; color: var(--tv-deep); }
 .trivia-status.open { background: var(--tv-ok); color: #fff; }
 .trivia-status.locked { background: var(--tv-deep); color: #fff; }
@@ -101,19 +102,52 @@
 .tv-teams { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 0.6rem; }
 .tv-chip { background: rgba(255, 255, 255, 0.14); border-radius: 999px; padding: 0.4rem 1.1rem; font-size: clamp(1rem, 1.6vw, 1.4rem); font-weight: 600; }
 
-.tv-question { margin: auto; width: 100%; max-width: 1400px; display: flex; flex-direction: column; gap: 1.5rem; }
+.tv-question { margin: 0 auto; flex: 1 1 auto; min-height: 0; width: 100%; max-width: 1500px; display: flex; flex-direction: column; justify-content: center; gap: clamp(0.75rem, 2vh, 1.5rem); }
 .tv-meta { display: flex; justify-content: space-between; gap: 1rem; font-size: clamp(1rem, 1.8vw, 1.6rem); font-weight: 700; color: var(--tv-gold); }
-.tv-q { font-size: clamp(2rem, 4.4vw, 4.25rem); font-weight: 800; line-height: 1.12; margin: 0; text-wrap: balance; }
-.tv-q.small-q { font-size: clamp(1.3rem, 2.4vw, 2.2rem); font-weight: 600; color: rgba(255, 255, 255, 0.8); }
+.tv-q { --k: 1; font-size: calc(var(--qs) * var(--k)); font-weight: 800; line-height: 1.12; margin: 0; text-wrap: balance; }
+/* Text size follows question length: short questions get big type, long ones shrink to fit. */
+.tv-q.len-s { --qs: clamp(2.6rem, 5.6vw, 5.75rem); }
+.tv-q.len-m { --qs: clamp(2.2rem, 4.3vw, 4.4rem); }
+.tv-q.len-l { --qs: clamp(1.8rem, 3.3vw, 3.4rem); }
+.tv-q.len-xl { --qs: clamp(1.5rem, 2.6vw, 2.7rem); }
+.tv-q.with-pics { --k: 0.75; }
+.tv-q.small-q { font-size: clamp(1.1rem, 1.8vw, 1.7rem); font-weight: 600; color: rgba(255, 255, 255, 0.75); text-align: center; }
 .tv-music { display: inline-flex; align-items: center; gap: 0.75rem; font-size: clamp(1.5rem, 3vw, 2.5rem); font-weight: 700; color: var(--tv-gold); }
-.tv-imgs { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
-.tv-imgs img { max-height: 48vh; max-width: 100%; border-radius: 1rem; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35); background: #fff; }
+/* Pictures fill all the height that's left; each one keeps its shape. */
+.tv-pics { flex: 1 1 0; min-height: 12rem; container-type: size; display: grid; grid-template-rows: minmax(0, 1fr); gap: clamp(1rem, 2.5vw, 2.5rem); }
+.tv-pics.n1 { grid-template-columns: minmax(0, 1fr); }
+.tv-pics.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.tv-pics.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.tv-pic { --cap: 0px; font-size: clamp(1.1rem, 2vw, 1.9rem); margin: 0; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.6rem; min-width: 0; min-height: 0; }
+.tv-pic:has(figcaption) { --cap: calc(2.6em + 0.6rem); } /* room for a two-line caption */
+.tv-pic img { display: block; width: 100%; height: calc(100cqh - var(--cap)); object-fit: contain; filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.4)); }
+.tv-pic figcaption { flex: none; text-align: center; font-size: 1em; font-weight: 700; line-height: 1.25; text-wrap: balance; }
+.tv-reveal .tv-pic figcaption { color: var(--tv-gold); }
+.tv-hint { align-self: center; max-width: 1100px; background: rgba(242, 183, 5, 0.14); border: 2px solid var(--tv-gold); border-radius: 1rem; padding: 0.75rem 1.5rem; text-align: center; }
+.tv-hint-label { display: block; color: var(--tv-gold); font-weight: 800; font-size: clamp(1rem, 1.6vw, 1.4rem); }
+.tv-hint p { margin: 0; font-size: clamp(1.3rem, 2.4vw, 2.2rem); font-weight: 700; white-space: pre-line; line-height: 1.3; }
 .tv-choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; }
 .tv-choice { background: rgba(255, 255, 255, 0.12); border-radius: 1rem; padding: 1rem 1.5rem; font-size: clamp(1.25rem, 2.6vw, 2.4rem); font-weight: 700; }
 .tv-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .tv-pill { background: rgba(255, 255, 255, 0.15); border-radius: 999px; padding: 0.5rem 1.4rem; font-size: clamp(1.1rem, 2vw, 1.75rem); font-weight: 700; }
 .tv-pill.locked { background: var(--tv-gold); color: var(--tv-deep); }
-.tv-answer { font-size: clamp(2.5rem, 6vw, 6rem); font-weight: 800; color: var(--tv-gold); line-height: 1.08; text-wrap: balance; }
+.tv-answer { font-weight: 800; color: var(--tv-gold); line-height: 1.1; text-wrap: balance; text-align: center; overflow-wrap: anywhere; }
+.tv-answer.len-s { font-size: clamp(2.8rem, 6vw, 6rem); }
+.tv-answer.len-m { font-size: clamp(2.2rem, 4.2vw, 4.2rem); }
+.tv-answer.len-l, .tv-answer.len-xl { font-size: clamp(1.6rem, 2.8vw, 2.8rem); }
+.tv-pics + .tv-answer.len-s, .tv-pics + .tv-answer.len-m { font-size: clamp(2rem, 3.8vw, 3.8rem); }
+.tv-pics + .tv-answer.len-l, .tv-pics + .tv-answer.len-xl { font-size: clamp(1.4rem, 2.4vw, 2.4rem); }
+
+/* Score ticker along the bottom */
+.tv.with-ticker { padding-bottom: calc(clamp(1.5rem, 4vw, 4rem) + 4rem); }
+.tv-ticker { position: fixed; left: 0; right: 0; bottom: 0; height: 3.75rem; background: rgba(5, 15, 20, 0.82); border-top: 2px solid var(--tv-gold); overflow: hidden; display: flex; align-items: center; z-index: 5; }
+.tv-ticker-track { display: flex; gap: 2.75rem; padding: 0 2rem; white-space: nowrap; margin: 0 auto; }
+.tv-ticker-track.scroll { margin: 0; animation: tv-tick linear infinite; }
+@keyframes tv-tick { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.tv-tick { display: inline-flex; align-items: baseline; gap: 0.6rem; font-size: clamp(1.1rem, 1.8vw, 1.6rem); font-weight: 700; }
+.tv-tick b { color: rgba(255, 255, 255, 0.6); }
+.tv-tick em { font-style: normal; color: var(--tv-gold); font-variant-numeric: tabular-nums; }
+.tv-tick.first .nm { color: var(--tv-gold); }
 
 .tv-scores { margin: auto; width: 100%; max-width: 1200px; }
 .tv-winner { font-size: clamp(1.75rem, 3.5vw, 3rem); font-weight: 800; color: var(--tv-gold); }
@@ -132,4 +166,12 @@
   .tv-board li { grid-template-columns: 2.5rem minmax(0, 1fr) 4rem; }
   .tv-board .bar { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .tv-board .bar i { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .tv-board .bar i { transition: none; } .tv-ticker-track.scroll { animation: none; flex-wrap: wrap; } }
+@media (max-width: 800px) { .tv-pics.n2, .tv-pics.n3 { grid-template-columns: minmax(0, 1fr); } }
+
+/* Player phone extras */
+.trivia-hintbox { background: #fff4cf; border: 2px solid var(--tv-gold); border-radius: 0.75rem; padding: 0.6rem 0.9rem; margin-bottom: 1rem; white-space: pre-line; }
+.trivia-figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: 0.75rem; margin-bottom: 1rem; }
+.trivia-figs figure { margin: 0; text-align: center; }
+.trivia-figs figcaption { font-size: 0.9rem; font-weight: 600; margin-top: 0.35rem; }
+.trivia-pre { white-space: pre-line; }

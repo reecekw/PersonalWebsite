@@ -57,6 +57,9 @@ const QuestionManager: React.FC<Props> = ({ questions, onChanged, locked }) => {
         answer_image: blank(r.answer_image),
         audio_file: blank(r.audio_file),
         answer_audio: blank(r.answer_audio),
+        hint: blank(r.hint),
+        question_captions: blank(r.question_captions),
+        answer_captions: blank(r.answer_captions),
         notes: blank(r.notes),
       };
     });
@@ -107,7 +110,7 @@ const QuestionManager: React.FC<Props> = ({ questions, onChanged, locked }) => {
       <div className="col-lg-5">
         <div className="trivia-card p-3 p-md-4 mb-3">
           <h2 className="h5 fw-bold">1. Load questions from a CSV</h2>
-          <p className="small text-muted">Columns: position, type, question, choices (separated by |), answer, points, question_image, answer_image, audio_file (clip played with the question), answer_audio (played when you reveal), notes. Loading replaces every question.</p>
+          <p className="small text-muted">Columns: position, type, question, choices (separated by |), answer, points, question_image, answer_image, audio_file (clip played with the question), answer_audio (played when you reveal), hint, question_captions and answer_captions (one per picture, separated by ;), notes. Loading replaces every question.</p>
           <input type="file" accept=".csv,text/csv" className="form-control mb-2" onChange={readCsv} disabled={busy || locked} aria-label="Question CSV file" />
           {rows && rows.length > 0 && (
             <div className="mt-2">
@@ -152,6 +155,7 @@ const QuestionManager: React.FC<Props> = ({ questions, onChanged, locked }) => {
                         {typeLabel[q.type] ?? q.type}{q.source ? ` · ${q.source}` : ''}
                         {q.audio_file ? ` · ${q.audio_file}` : ''}{q.answer_audio ? ` · ${q.answer_audio}` : ''}
                       </div>
+                      {q.hint && <div className="small text-primary-emphasis trivia-pre">Hint: {q.hint}</div>}
                       {q.notes && <div className="small text-warning-emphasis">{q.notes}</div>}
                     </td>
                     <td>{q.answer}</td>

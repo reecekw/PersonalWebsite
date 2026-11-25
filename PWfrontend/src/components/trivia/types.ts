@@ -10,6 +10,8 @@ export interface PublicQuestion {
   choices: string[];
   points: number;
   image_urls: string[];
+  captions?: string[]; // one per picture, shown under it
+  hint?: string | null; // filled in only when the host clicks Show hint
   has_audio: boolean;
 }
 
@@ -17,6 +19,7 @@ export interface Reveal {
   position: number;
   answer: string;
   image_urls: string[];
+  captions?: string[];
 }
 
 export interface Game {
@@ -62,6 +65,9 @@ export interface Question {
   audio_file: string | null; // song clip played with the question
   answer_audio: string | null; // e.g. the chorus, played when the answer is revealed
   notes: string | null;
+  hint: string | null;
+  question_captions: string | null;
+  answer_captions: string | null;
 }
 
 export const BUCKET = 'trivia';
@@ -82,6 +88,12 @@ export const rankTeams = (teams: Team[]): (Team & { rank: number })[] => {
 
 export const fmtPoints = (n: number | null | undefined): string =>
   n === null || n === undefined ? '' : Number.isInteger(Number(n)) ? String(Number(n)) : Number(n).toFixed(1);
+
+// Bigger text for short questions, smaller for long ones.
+export const sizeClass = (text: string | null | undefined): string => {
+  const n = (text ?? '').length;
+  return n <= 45 ? 'len-s' : n <= 90 ? 'len-m' : n <= 160 ? 'len-l' : 'len-xl';
+};
 
 export const typeLabel: Record<string, string> = {
   text: 'Question',

@@ -237,7 +237,19 @@ const TriviaPlayer: React.FC = () => {
           </div>
           <p className="trivia-q">{q.question}</p>
           {q.has_audio && <p className="trivia-hint">Listen to the song playing in the room.</p>}
-          {q.image_urls.map((u) => <img key={u} src={u} alt="" className="trivia-img mb-3" />)}
+          {q.image_urls.length === 1 && <img src={q.image_urls[0]} alt={q.captions?.[0] ?? ''} className="trivia-img mb-3" />}
+          {q.image_urls.length === 1 && q.captions?.[0] && <p className="text-center fw-semibold">{q.captions[0]}</p>}
+          {q.image_urls.length > 1 && (
+            <div className="trivia-figs">
+              {q.image_urls.map((u, i) => (
+                <figure key={u}>
+                  <img src={u} alt={q.captions?.[i] ?? ''} className="trivia-img" />
+                  {q.captions?.[i] && <figcaption>{q.captions[i]}</figcaption>}
+                </figure>
+              ))}
+            </div>
+          )}
+          {q.hint && game.status !== 'reveal' && <div className="trivia-hintbox"><strong>Hint:</strong> {q.hint}</div>}
 
           {game.status === 'reveal' && game.reveal?.position === game.position ? (
             <div className="trivia-reveal">

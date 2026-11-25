@@ -35,6 +35,9 @@ create table if not exists public.questions (
   notes text
 );
 alter table public.questions add column if not exists answer_audio text;
+alter table public.questions add column if not exists hint text;
+alter table public.questions add column if not exists question_captions text;
+alter table public.questions add column if not exists answer_captions text;
 alter table public.questions enable row level security;
 drop policy if exists "admins manage questions" on public.questions;
 create policy "admins manage questions" on public.questions
